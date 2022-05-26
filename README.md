@@ -158,7 +158,7 @@ displaying on Grafana Dashboards and panels.
     - Configure root url:
 
         ```
-        GF_SERVER_ROOT_URL=http://localhost/grafana/
+        GF_SERVER_ROOT_URL=http://localhost:3000
         ```
 
     - Add plugin dist compiled:
@@ -199,11 +199,11 @@ displaying on Grafana Dashboards and panels.
     $ docker-compose up
     ```
 
-- http://localhost/grafana/plugins/orion/
+- http://localhost:3000/plugins/orion/
 
 ### Orion Config
 
-Create a new orion-datasource with url on [datasources](http://localhost/grafana/datasources):
+Create a new orion-datasource with url on [datasources](http://localhost:3000/datasources):
 
 - http://orion-dev:1026/
 
@@ -212,7 +212,7 @@ Create a new orion-datasource with url on [datasources](http://localhost/grafana
 Commands to initiate the Context:
 
 ```
-curl --location --request POST 'http://localhost/orion/v2/entities' \
+curl --location --request POST 'http://localhost:1026/v2/entities' \
 --header 'fiware-service: test' \
 --header 'fiware-servicepath: /test' \
 --header 'Content-Type: application/json' \
@@ -288,7 +288,7 @@ curl --location --request POST 'http://localhost/orion/v2/entities' \
 ```
 
 ```
-curl --location --request POST 'http://localhost/orion/v2/entities' \
+curl --location --request POST 'http://localhost:1026/v2/entities' \
 --header 'fiware-service: test' \
 --header 'fiware-servicepath: /test' \
 --header 'Content-Type: application/json' \
@@ -334,13 +334,13 @@ curl --location --request POST 'http://localhost/orion/v2/entities' \
 ```
 
 ```
-curl --location --request DELETE 'http://localhost/orion/v2/entities/urn:ngsi:Test1' \
+curl --location --request DELETE 'http://localhost:1026/v2/entities/urn:ngsi:Test1' \
 --header 'fiware-service: test' \
 --header 'fiware-servicepath: /test'
 ```
 
 ```
-curl --location --request DELETE 'http://localhost/orion/v2/entities/urn:ngsi:Test2' \
+curl --location --request DELETE 'http://localhost:1026/v2/entities/urn:ngsi:Test2' \
 --header 'fiware-service: test' \
 --header 'fiware-servicepath: /test'
 ```
