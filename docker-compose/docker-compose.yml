@@ -1,0 +1,43 @@
+version: '3.3'
+
+services:
+    grafana-dev:
+      image: grafana/grafana-oss
+      ports:
+        - "3000:3000"
+      environment:
+        - GF_SERVER_ROOT_URL=http://localhost:3000
+        - GF_USERS_DEFAULT_THEME=light
+        - GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS=orion-datasource
+      volumes:
+#        - "grafana-data-orion-datasource:/var/lib/grafana"
+        - type: bind
+          source: ../dist
+          target: /var/lib/grafana/plugins/orion
+      networks:
+        - dev-orion-datasource-network
+    mongo-dev:
+      image: mongo:4.4
+      command: --nojournal
+#      volumes:
+#        - "mongo-data-orion-datasource:/data/db"
+      networks:
+        - dev-orion-datasource-network
+    orion-dev:
+      image: fiware/orion:latest
+      ports:
+        - "1026:1026"
+      command: -dbhost mongo-dev -corsOrigin __ALL -logLevel DEBUG -httpTimeout 20000
+      networks:
+        - dev-orion-datasource-network
+
+#volumes:
+#  grafana-data-orion-datasource:
+#    external: true
+#  mongo-data-orion-datasource:
+#    external: true
+
+networks:
+  dev-orion-datasource-network:
+    driver:
+      bridge

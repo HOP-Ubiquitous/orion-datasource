@@ -1,0 +1,32 @@
+{
+  "name": "Orion Datasource",
+  "id": "orion-datasource",
+  "type": "datasource",
+  "streaming": true,
+  "info": {
+    "description": "Orion Datasource. Get Fiware Entities from Orion Context Broker in Grafana",
+    "author": {
+      "name": "HOPU",
+      "url": "https://hopu.eu/"
+    },
+    "logos": {
+      "small": "img/orion-icon.png",
+      "large": "img/orion-icon.png"
+    },
+    "links": [
+      {
+        "name": "GitHub",
+        "url": "https://github.com/HOP-Ubiquitous/orion-datasource"
+      }
+    ],
+    "version": "%VERSION%",
+    "updated": "%TODAY%"
+  },
+  "dependencies": {
+    "grafanaVersion": "8.x.x",
+    "plugins": []
+  },
+  "staticRoot": ".",
+  "metrics": true,
+  "annotations": false
+}

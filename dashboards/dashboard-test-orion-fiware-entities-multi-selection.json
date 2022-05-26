@@ -1,0 +1,290 @@
+{
+  "annotations": {
+    "list": [
+      {
+        "builtIn": 1,
+        "datasource": "-- Grafana --",
+        "enable": true,
+        "hide": true,
+        "iconColor": "rgba(0, 211, 255, 1)",
+        "name": "Annotations & Alerts",
+        "type": "dashboard"
+      }
+    ]
+  },
+  "editable": true,
+  "gnetId": null,
+  "graphTooltip": 0,
+  "id": 24,
+  "iteration": 1629721552070,
+  "links": [],
+  "panels": [
+    {
+      "datasource": "${orionDatasource}",
+      "fieldConfig": {
+        "defaults": {
+          "color": {
+            "mode": "thresholds"
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "gridPos": {
+        "h": 11,
+        "w": 24,
+        "x": 0,
+        "y": 0
+      },
+      "id": 9,
+      "options": {
+        "reduceOptions": {
+          "calcs": [
+            "lastNotNull"
+          ],
+          "fields": "",
+          "values": false
+        },
+        "showThresholdLabels": false,
+        "showThresholdMarkers": true,
+        "text": {}
+      },
+      "pluginVersion": "8.0.6",
+      "repeat": "resourceList",
+      "repeatDirection": "v",
+      "targets": [
+        {
+          "attribute": "CO",
+          "attributes": "$resourceList",
+          "currentTimeColumn": true,
+          "data": "",
+          "defaultFiwareService": false,
+          "enableTypeSearch": false,
+          "entityId": "$entityId",
+          "entityType": "$entityType",
+          "executePostQueryFilter": false,
+          "hide": false,
+          "id": "All",
+          "invertLocationCoordinates": false,
+          "jsonBodyUpdate": "{}",
+          "queryFilter": "",
+          "refId": "A",
+          "selectedRequest": "Entities",
+          "service": "$fiwareService",
+          "servicePath": "$fiwareServicePath",
+          "target": "select metric",
+          "type": "table",
+          "value": "1"
+        }
+      ],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Entity Resource by Type, Entity Id and Resource List",
+      "type": "gauge"
+    }
+  ],
+  "refresh": false,
+  "schemaVersion": 30,
+  "style": "dark",
+  "tags": [],
+  "templating": {
+    "list": [
+      {
+        "current": {
+          "selected": false,
+          "text": "Orion Test",
+          "value": "Orion Test"
+        },
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Orion Datasource",
+        "multi": false,
+        "name": "orionDatasource",
+        "options": [],
+        "query": "orion-datasource",
+        "queryValue": "",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "type": "datasource"
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "test",
+          "value": "test"
+        },
+        "datasource": "${orionDatasource}",
+        "definition": "{\n    \"request\": \"FiwareServices\"\n}",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Fiware-Service",
+        "multi": false,
+        "name": "fiwareService",
+        "options": [],
+        "query": "{\n    \"request\": \"FiwareServices\"\n}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": false,
+          "text": "/test",
+          "value": "/test"
+        },
+        "datasource": "${orionDatasource}",
+        "definition": "{\n    \"request\": \"FiwareServicePaths\",\n    \"fiwareScope\": {\n        \"service\": \"$fiwareService\",\n        \"servicePath\": \"None\",\n        \"type\": \"None\"\n    }\n}",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": false,
+        "label": "Fiware-ServicePath",
+        "multi": false,
+        "name": "fiwareServicePath",
+        "options": [],
+        "query": "{\n    \"request\": \"FiwareServicePaths\",\n    \"fiwareScope\": {\n        \"service\": \"$fiwareService\",\n        \"servicePath\": \"None\",\n        \"type\": \"None\"\n    }\n}",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "All",
+        "current": {
+          "selected": false,
+          "text": "Test",
+          "value": "Test"
+        },
+        "datasource": "${orionDatasource}",
+        "definition": "{\n\t\"request\": \"Types\",\n\t\"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n\t\t\"type\": \"\"\n\t}\n}",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Entity Type",
+        "multi": false,
+        "name": "entityType",
+        "options": [],
+        "query": "{\n\t\"request\": \"Types\",\n\t\"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n\t\t\"type\": \"\"\n\t}\n}",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": "All",
+        "current": {
+          "selected": true,
+          "text": "Test-HOP1",
+          "value": "Test-HOP1"
+        },
+        "datasource": "${orionDatasource}",
+        "definition": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n                \"type\": \"$entityType\"\n            },\n            \"attributeName\": \"id,name\"\n        }",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Entity",
+        "multi": false,
+        "name": "entityId",
+        "options": [],
+        "query": "        {\n            \"request\": \"Entities\",\n            \"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n                \"type\": \"$entityType\"\n            },\n            \"attributeName\": \"id,name\"\n        }",
+        "refresh": 1,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 1,
+        "tagValuesQuery": "",
+        "tagsQuery": "",
+        "type": "query",
+        "useTags": false
+      },
+      {
+        "allValue": null,
+        "current": {
+          "selected": true,
+          "text": [
+            "CO",
+            "NO",
+            "NO2"
+          ],
+          "value": [
+            "CO",
+            "NO",
+            "NO2"
+          ]
+        },
+        "datasource": "${orionDatasource}",
+        "definition": "        {\n            \"request\": \"AttributeValueAsList\",\n            \"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n                \"type\": \"$entityType\"\n            },\n            \"entityId\": \"$entityId\",\n            \"attributeName\": \"resources\"\n        }",
+        "description": null,
+        "error": null,
+        "hide": 0,
+        "includeAll": true,
+        "label": "Resource List",
+        "multi": true,
+        "name": "resourceList",
+        "options": [],
+        "query": "        {\n            \"request\": \"AttributeValueAsList\",\n            \"fiwareScope\": {\n\t\t\"service\": \"$fiwareService\",\n\t\t\"servicePath\": \"$fiwareServicePath\",\n                \"type\": \"$entityType\"\n            },\n            \"entityId\": \"$entityId\",\n            \"attributeName\": \"resources\"\n        }",
+        "refresh": 2,
+        "regex": "",
+        "skipUrlSync": false,
+        "sort": 0,
+        "type": "query"
+      }
+    ]
+  },
+  "time": {
+    "from": "now-5m",
+    "to": "now"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ]
+  },
+  "timezone": "",
+  "title": "dashboard-test-orion-fiware-entities-multi-selection",
+  "uid": "K8tBS9n7z",
+  "version": 5
+}

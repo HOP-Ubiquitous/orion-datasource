@@ -1,0 +1,105 @@
+<query-editor-row query-ctrl="ctrl" class="generic-datasource-query-row" has-text-edit-mode="true">
+    <div class="gf-form-inline">
+        <div ng-if="!ctrl.target.rawQuery">
+
+            <div class="gf-form">
+                <label class="gf-form-label width-18 query-keyword">Request</label>
+                <select class="gf-form-input gf-size-auto width-30"
+                        ng-model="ctrl.target.selectedRequest"
+                        ng-options="f as f for f in ctrl.requests"
+                        ng-change="ctrl.onChangeInternal()">
+                </select>
+            </div>
+
+            <div class="gf-form">
+                <label class="gf-form-label query-keyword width-18">Default Fiware-Headers
+                    <info-popover
+                            mode="header">Orion Datasource Config variables
+                    </info-popover>
+                </label>
+                <input class="gf-form-checkbox width-3"
+                       style="height: 15px; margin: 10px 0"
+                       type="checkbox"
+                       ng-model="ctrl.target.defaultFiwareService"
+                       ng-blur="ctrl.onChangeInternal()"
+                       switch-class="gf-form-checkbox--transparent"/>
+            </div>
+
+            <div class="gf-form" ng-hide="ctrl.target.defaultFiwareService">
+                <label class="gf-form-label query-keyword width-18">Fiware-Service</label>
+                <input type="text" class="gf-form-input width-30" ng-model='ctrl.target.service'
+                       ng-blur="ctrl.onChangeInternal()"/>
+            </div>
+
+            <div class="gf-form" ng-hide="ctrl.target.defaultFiwareService">
+                <label class="gf-form-label query-keyword width-18">Fiware-ServicePath</label>
+                <input type="text"
+                       class="gf-form-input width-30"
+                       ng-model='ctrl.target.servicePath'
+                       ng-blur="ctrl.onChangeInternal()"/>
+            </div>
+
+            <div class="gf-form">
+                <label class="gf-form-label width-18 query-keyword">Entity Type</label>
+                <gf-form-dropdown class="width-30"
+                                  model="ctrl.target.entityType"
+                                  allow-custom="true"
+                                  lookup-text="true"
+                                  get-options="ctrl.findMetricsTypesGrafana()"
+                                  on-change="ctrl.reloadEntities()">
+                </gf-form-dropdown>
+            </div>
+
+            <div class="gf-form">
+                <label class="gf-form-label query-keyword width-18">Include Current Time Column
+                    <info-popover
+                            mode="header">Add time column to table with last date modified
+                    </info-popover>
+                </label>
+                <input class="gf-form-checkbox width-3"
+                       style="height: 15px; margin: 10px 0"
+                       type="checkbox"
+                       ng-model="ctrl.target.currentTimeColumn"
+                       ng-blur="ctrl.onChangeInternal()"
+                       switch-class="gf-form-checkbox--transparent"/>
+            </div>
+
+            <div class="gf-form">
+                <label class="gf-form-label width-18 query-keyword">Entities</label>
+                <gf-form-dropdown class="width-30"
+                                  model="ctrl.target.entityId"
+                                  allow-custom="true"
+                                  lookup-text="true"
+                                  get-options="ctrl.findMetricsEntitiesGrafana()"
+                                  on-change="ctrl.onChangeInternal()">
+                </gf-form-dropdown>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label width-18 query-keyword" title="Select attributes separated by comma">Attributes</label>
+                <gf-form-dropdown class="width-30"
+                                  model="ctrl.target.attributes"
+                                  allow-custom="true"
+                                  lookup-text="true"
+                                  get-options="ctrl.findMetricsAttributesGrafana()"
+                                  on-change="ctrl.onChangeInternal()">
+                </gf-form-dropdown>
+            </div>
+            <div class="gf-form">
+                <label class="gf-form-label query-keyword width-18">Query Filter
+                    <info-popover
+                            mode="header">Filter entities with Simple Query Language. If you filter by lazy attribute or
+                        entities have lazy attributes, it fails
+                    </info-popover>
+                </label>
+                <input
+                        class="gf-form-input width-30"
+                        title="NGSI Query Format, name=='Device 1' or name=test or name='test','Device 1' or temperature>=4 or name==${name:csv}"
+                        type="text"
+                        placeholder="project=='$project'"
+                        ng-model='ctrl.target.queryFilter'
+                        ng-blur="ctrl.onChangeInternal()"
+                />
+            </div>
+        </div>
+    </div>
+</query-editor-row>

@@ -1,0 +1,26 @@
+{
+  "name": "orion-datasource",
+  "description": "Orion Datasource. Get Fiware Entities from Orion Context Broker in Grafana",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "grafana-toolkit plugin:build",
+    "test": "grafana-toolkit plugin:test",
+    "dev": "grafana-toolkit plugin:dev",
+    "watch": "grafana-toolkit plugin:dev --watch",
+    "dist-to-zip": "cp -r dist/ orion-datasource && zip orion-datasource.zip orion-datasource -r && rm -rfd orion-datasource"
+  },
+  "author": "HOPU",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@grafana/data": "latest",
+    "@grafana/toolkit": "latest",
+    "@grafana/ui": "latest",
+    "@grafana/runtime": "latest",
+    "@types/lodash": "latest",
+    "@testing-library/jest-dom": "5.4.0",
+    "@testing-library/react": "^10.0.2"
+  },
+  "engines": {
+    "node": ">=14"
+  }
+}
