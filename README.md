@@ -352,8 +352,4 @@ curl --location --request DELETE 'http://localhost/orion/v2/entities/urn:ngsi:Te
 
 ## ToDo
 
-- FIWARE logo?
-- hopu.eu web?
-- repository?
-- branches and tags? 
-- license
+None 
