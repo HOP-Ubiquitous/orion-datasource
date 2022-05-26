@@ -11,6 +11,11 @@
   },
   "author": "HOPU",
   "license": "Apache-2.0",
+  "jest": {
+    "moduleNameMapper": {
+      "app/plugins/sdk": "<rootDir>/node_modules/grafana-sdk-mocks/app/plugins/sdk.ts"
+    }
+  },
   "devDependencies": {
     "@grafana/data": "latest",
     "@grafana/toolkit": "latest",
